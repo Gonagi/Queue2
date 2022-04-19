@@ -65,16 +65,22 @@ void Enqueue(Queue queue, Item data)
 
 void Reallocate(Queue queue)
 {
-	Item a[INIT_CAPACITY];
+	Item* tmp = (Item*)malloc(2 * queue->capacity * sizeof(Item));
+	if (tmp == NULL)
+		terminate("Error in create : queue could not be xpanded.");
 
-	for (int i = 0; i < queue->size; i++) 
-		a[i] = queue->contents[i];
+	int index = queue->front;
 
-	queue->contents = (Item*)malloc(2 * INIT_CAPACITY * sizeof(Item));
+	for (int i = 0; i < queue->size; i++) {
+		tmp[i] = queue->contents[index];
+		index = (index + 1) % queue->capacity;
+	}
+	free(queue->contents);
 	
-	for (int i = 0; i < queue->size; i++)
-		queue->contents[i] = a[i];
-
+	queue->contents = tmp;
+	queue->front = 0;
+	queue->rear = queue->size - 1;
+	queue->size *= 2;
 	queue->capacity *= 2;
 }
 
