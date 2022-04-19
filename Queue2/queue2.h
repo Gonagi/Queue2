@@ -4,6 +4,7 @@
 #endif
 #include <stdio.h>
 #include <stdlib.h>
+#define INIT_CAPACITY 100
 
 typedef struct queue* Queue;
 typedef int Item;
