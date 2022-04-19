@@ -92,9 +92,6 @@ Item Dequeue(Queue queue)
 	Item result = queue->contents[queue->front];
 	
 	queue->front = (queue->front + 1) % queue->capacity;
-	//queue->front++;
-	//if (queue->front >= queue->capacity)
-	//	queue->front = 0;
 	queue->size--;
 	return result;
 }
@@ -104,4 +101,25 @@ Item Peek(Queue queue)
 	if (Is_empty(queue))
 		terminate("Error in peek : queue is empty.");
 	return queue->contents[queue->front];
+}
+
+void Print_queue(Queue queue)
+{
+	if (Is_empty(queue))
+		//terminate("Error in Print_queue : queue is empty.");
+		printf("queue is empty.\n");
+	else {
+		printf("Front : %d\n", queue->front);
+		printf("Rear : %d\n", queue->rear);
+
+		int index = queue->front;
+
+		for (int i = 0; i < queue->size; i++) {
+			printf("%d", queue->contents[index]);
+			index = (index + 1) % queue->capacity;
+			if (i < queue->size - 1)
+				printf(" --> ");
+		}
+		printf("\n\n");
+	}
 }

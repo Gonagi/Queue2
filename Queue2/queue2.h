@@ -2,10 +2,12 @@
 #define __QUEUE2_H__
 
 #endif
+#define INIT_CAPACITY 100
+#define _CRTDBG_MAP_ALLOC
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define INIT_CAPACITY 100
+
 
 typedef struct queue* Queue;
 typedef int Item;
