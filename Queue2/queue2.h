@@ -19,3 +19,4 @@ struct queue {
 
 void terminate(const char*);
 int get_size(Queue);	
+Queue Create_queue();

@@ -16,7 +16,7 @@ Queue Create_queue()
 	Queue new_queue = (Queue)malloc(sizeof(struct queue));
 	if (new_queue == NULL)
 		terminate("Error in create : queue could not be created.");
-	
+
 	new_queue->contents = (Item*)malloc(INIT_CAPACITY * sizeof(Item));
 	if (new_queue->contents == NULL) {
 		free(new_queue);
